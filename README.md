@@ -161,6 +161,9 @@ documentada).
 
 ## Como executar os testes
 
+Execute na raiz do repositório (a mesma pasta deste `README.md`) — os imports
+dependem do `conftest.py` da raiz:
+
 ```powershell
 # Código corrigido (PRINT2 — padrão)
 python -m pytest -v
@@ -169,5 +172,5 @@ python -m pytest -v
 $env:ALVO="codigo_original"; python -m pytest -v
 
 # Voltar ao corrigido
-Remove-Item Env:ALVO
+Remove-Item Env:ALVO -ErrorAction SilentlyContinue
 ```

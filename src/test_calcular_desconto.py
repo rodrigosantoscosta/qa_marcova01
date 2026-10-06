@@ -3,7 +3,9 @@
 Cenários: cenarios.md (grupos 1–4). IDs parametrizados como test IDs.
 
 Alvo via variável de ambiente ALVO:
-  ALVO=codigo_original   -> lógica do Jr. (PRINT1, esperado: 6 falhas)
+  ALVO=codigo_original   -> lógica do Jr. (PRINT1, esperado: 8 falhas no total
+                             da suite: CT-BASE-03, CT-VIP-02/03/04/06/07,
+                             CT-INV-06a/06b — os 2 últimos em test_robustez)
   ALVO=codigo_corrigido  -> lógica corrigida (PRINT2, esperado: verde)
 Padrão: codigo_corrigido.
 """
