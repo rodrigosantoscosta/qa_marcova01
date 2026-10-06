@@ -69,5 +69,5 @@ Técnica: análise de valor limite nas fronteiras 100 / 500 e no teto.
 
 ## Observações para a automação (Pytest)
 
-- Grupos 1–4: testes de conformidade com a regra (devem passar no código corrigido e **falhar** no código original nos casos CT-BASE-03, CT-VIP-02/03/04/06/07). CT-VIP-11 passa em ambos (o `== "VIP"` original já ignora `None` sem quebrar).
+- Grupos 1–4: testes de conformidade com a regra (devem passar no código corrigido e **falhar** no código original nos casos CT-BASE-03, CT-VIP-02/03/04/06/07 e CT-INV-06a/06b — os dois últimos cobrem a mesma fronteira de R$ 100 com `int`/`float`). CT-VIP-11 passa em ambos (o `== "VIP"` original já ignora `None` sem quebrar).
 - Grupo 5: testes exploratórios de robustez — CT-INV-01 e CT-INV-05 documentam o comportamento; CT-INV-02/03/04 propõem validação de entrada como melhoria futura (fora do escopo da regra atual).

@@ -54,7 +54,8 @@ def calcular_desconto(valor_compra, tipo_cliente):
 
 - [x] Listar os cenários de teste (textual)
 
-Ver [`cenarios.md`](cenarios.md): 33 cenários em 5 grupos —
+Ver [`cenarios.md`](cenarios.md): 33 cenários em 5 grupos (35 casos
+automatizados — CT-INV-01 e CT-INV-06 desdobrados em 2 cada) —
 desconto base/fronteiras (CT-BASE), bônus VIP e variações de escrita (CT-VIP),
 teto de R$ 200 (CT-TETO), arredondamento (CT-ROUND) e
 dados inesperados/robustez (CT-INV).
@@ -73,6 +74,8 @@ dados inesperados/robustez (CT-INV).
 
 - [x] Descrever os bugs encontrados
 - [x] Explicar como a escolha dos valores de teste revelou os bugs
+
+> 📄 Resposta detalhada neste documento: [`BUG.md`](BUG.md)
 
 **Bug 1 — Fronteira de R$ 100,00 excluída dos 10% (lógica + análise de valor limite)**
 O código original usava `valor_compra > 100`, mas a regra diz "igual ou maior que
