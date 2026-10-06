@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Pytest
+.pytest_cache/
+
+# Ambiente
+.venv/
+venv/
+
+# Editores/OS
+.vscode/
+.idea/
+.DS_Store
