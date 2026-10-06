@@ -97,11 +97,11 @@ testes atacam os limites ± 1 centavo:
 
 | Teste | Entrada | Original | Esperado | O que revela |
 |---|---|---|---|---|
-| CT-BASE-02 | `(99.99, "COMUM")` | 0.0 ✅ | 0.0 | confirma que a isenção começa antes do limite |
-| **CT-BASE-03** | **`(100, "COMUM")`** | **0 (❌)** | **10.0** | **Bug 1**: o R$ 100 exato perde o desconto |
-| CT-INV-06a/06b | `(100, …)` e `(100.0, …)` | ambos 0 (❌) | 10.0 | o bug é na **comparação**, não no tipo numérico (`int` vs `float` falham igual) |
-| CT-BASE-06 | `(500, "COMUM")` | 100.0 ✅ | 100.0 | fronteira das faixas 10%/20% funcionando (não era bug) |
-| CT-TETO-01/02 | `1000` vs `1000.01` | 200.0 vs 200 ✅ | idem | valida o **corte exato** no teto (200.002 → 200) |
+| CT-BASE-02 | `(99.99, "COMUM")` | 0.0 (passa) | 0.0 | confirma que a isenção começa antes do limite |
+| **CT-BASE-03** | **`(100, "COMUM")`** | **0 (falha)** | **10.0** | **Bug 1**: o R$ 100 exato perde o desconto |
+| CT-INV-06a/06b | `(100, …)` e `(100.0, …)` | ambos 0 (falha) | 10.0 | o bug é na **comparação**, não no tipo numérico (`int` vs `float` falham igual) |
+| CT-BASE-06 | `(500, "COMUM")` | 100.0 (passa) | 100.0 | fronteira das faixas 10%/20% funcionando (não era bug) |
+| CT-TETO-01/02 | `1000` vs `1000.01` | 200.0 vs 200 (passa) | idem | valida o **corte exato** no teto (200.002 → 200) |
 
 Um teste "óbvio" com R$ 300 teria deixado o Bug 1 passar em branco — só a
 fronteira de R$ 100 expôs.
@@ -113,11 +113,11 @@ A matriz de entradas cobriu as variações que a regra menciona explicitamente:
 
 | Teste | Entrada | Original | Esperado |
 |---|---|---|---|
-| CT-VIP-04 | `(300, "vip")` | 30.0 (❌) | 45.0 |
-| CT-VIP-06 | `(300, "vIp")` | 30.0 (❌) | 45.0 |
-| CT-VIP-07 | `(300, " vip ")` | 30.0 (❌) | 45.0 |
-| CT-VIP-02/03 | `(99.99, "vip")`, `(100, "Vip")` | 0 / 0 (❌) | 5.0 / 15.0 |
-| CT-VIP-05 | `(500, "VIP")` | 125.0 ✅ | 125.0 |
+| CT-VIP-04 | `(300, "vip")` | 30.0 (falha) | 45.0 |
+| CT-VIP-06 | `(300, "vIp")` | 30.0 (falha) | 45.0 |
+| CT-VIP-07 | `(300, " vip ")` | 30.0 (falha) | 45.0 |
+| CT-VIP-02/03 | `(99.99, "vip")`, `(100, "Vip")` | 0 / 0 (falha) | 5.0 / 15.0 |
+| CT-VIP-05 | `(500, "VIP")` | 125.0 (passa) | 125.0 |
 
 O contraste entre CT-VIP-04 (falha) e CT-VIP-05 (passa) **isola a causa na
 comparação de strings** — o cálculo do bônus em si estava certo. Sem esse
@@ -140,10 +140,6 @@ par, seria fácil culpar a matemática do percentual.
   CT-VIP-04, CT-VIP-06, CT-VIP-07, CT-INV-06a, CT-INV-06b: todas apontando
   para os **2 bugs de lógica** acima.
 - **PRINT2 (código corrigido): 32 passaram, 3 xfail, 0 falhas.**
-
-> Lição de QA: testar o caso "famoso" do R$ 300 é necessário, mas
-> **insuficiente** — bugs de lógica em regras de faixa se escondem nas
-> fronteiras e nas variações de formato da entrada.
 
 ---
 

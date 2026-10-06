@@ -4,13 +4,35 @@ Repositório de atividades de Qualidade de Software.
 
 ---
 
+## Estrutura
+
+```
+qa_marcova01/
+├── BUG.md                  # Bugs encontrados e justificativa dos testes (missão 3)
+├── cenarios.md             # Cenários de teste textuais (missão 2)
+├── conftest.py             # Garante a raiz no sys.path para os imports
+├── desafio.txt             # User Story e Critérios de Aceite
+├── README.md
+├── prints/
+│   ├── print_01.png        # PRINT1 — testes ANTES da correção
+│   └── print_02.png        # PRINT2 — testes DEPOIS da correção
+└── src/
+    ├── codigo.py               # Original do Jr. (literal, com indentação quebrada)
+    ├── codigo_original.py      # Lógica do Jr. normalizada (alvo do PRINT1)
+    ├── codigo_corrigido.py     # Código corrigido (alvo do PRINT2)
+    ├── test_calcular_desconto.py  # 27 testes de conformidade (CT-BASE/VIP/TETO/ROUND)
+    └── test_robustez.py          # 8 testes de robustez (CT-INV)
+```
+
+---
+
 ## Tasks
 
-### 1. Código corrigido (1 point)
+### 1. Código corrigido
 
 > **Informe o código principal corrigido.**
 
-- [x] Corrigir o código principal (`src/codigo.py`)
+- [x] Corrigir o código principal (`src/codigo.py` → `src/codigo_corrigido.py`)
 - [x] Incluir o código corrigido neste espaço
 
 **Bugs corrigidos:**
@@ -47,7 +69,7 @@ def calcular_desconto(valor_compra, tipo_cliente):
 
 ---
 
-### 2. Cenários de teste (1 point)
+### 2. Cenários de teste
 
 > **Informe todos os cenários (textual).**
 > Fique atento para dados inesperados que não estavam descritos explicitamente na regra.
@@ -60,13 +82,9 @@ desconto base/fronteiras (CT-BASE), bônus VIP e variações de escrita (CT-VIP)
 teto de R$ 200 (CT-TETO), arredondamento (CT-ROUND) e
 dados inesperados/robustez (CT-INV).
 
-```
-# Cenários detalhados em cenarios.md
-```
-
 ---
 
-### 3. Bugs encontrados e escolha dos dados (1 point)
+### 3. Bugs encontrados e escolha dos dados
 
 > **Descreva detalhadamente:**
 > Quais foram os bugs (erros de lógica) que você encontrou no código original?
@@ -75,7 +93,7 @@ dados inesperados/robustez (CT-INV).
 - [x] Descrever os bugs encontrados
 - [x] Explicar como a escolha dos valores de teste revelou os bugs
 
-> 📄 Resposta detalhada neste documento: [`BUG.md`](BUG.md)
+Resposta detalhada: [`BUG.md`](BUG.md)
 
 **Bug 1 — Fronteira de R$ 100,00 excluída dos 10% (lógica + análise de valor limite)**
 O código original usava `valor_compra > 100`, mas a regra diz "igual ou maior que
@@ -104,9 +122,7 @@ mensagem clara). Proposta de melhoria futura: validar entradas com `ValueError`
 
 ---
 
-### 4. PRINT1 — Relatório de testes ANTES da correção (1 point)
-
-> **Upload de 1 arquivo: imagem. Máx. 10 MB.**
+### 4. PRINT1 — Relatório de testes ANTES da correção
 
 - [x] Adicionar print do relatório de testes **antes** de corrigir o código
 
@@ -125,9 +141,7 @@ CT-VIP-04, CT-VIP-06, CT-VIP-07, CT-INV-06a e CT-INV-06b
 
 ---
 
-### 5. PRINT2 — Relatório de testes DEPOIS da correção (1 point)
-
-> **Upload de 1 arquivo: imagem. Máx. 10 MB.**
+### 5. PRINT2 — Relatório de testes DEPOIS da correção
 
 - [x] Adicionar print do relatório de testes **depois** de corrigir o código
 
