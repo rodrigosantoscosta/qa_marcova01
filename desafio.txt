@@ -1,0 +1,43 @@
+Você passou para a fase prática do nosso processo seletivo!
+
+O nosso Product Owner (PO) refinou uma nova User Story para o sistema de E-commerce. Um Desenvolvedor Júnior (Dev Jr.) assumiu a tarefa, escreveu o código e te mandou a seguinte mensagem:
+
+"Oi! Terminei a função de descontos. Como estava sem tempo, não criei os testes unitários. Mas testei de cabeça aqui com uma compra de R$ 300 e funcionou direitinho. Pode colocar em produção?"
+
+Como QA da nossa Tech UniDiasUp, você sabe que não pode confiar apenas no "teste de cabeça". Sua missão é escrever os testes automatizados com base nos requisitos, encontrar os bugs ocultos que "provavelmente" o Dev Jr. deixou passar e consertar o código (sim, será QA e Dev).
+
+📜 A História de Usuário (User Story)
+
+Como cliente do e-commerce,
+Quero que o sistema calcule descontos progressivos baseados no valor da minha compra e na minha categoria de fidelidade,
+Para que eu seja incentivado a comprar mais e me sinta recompensado por ser cliente fiel.
+
+✅ Critérios de Aceite (Regras de Negócio)
+A função calcular_desconto(valor_compra, tipo_cliente) deve retornar o valor do desconto em Reais (R$), respeitando:
+
+Compras com valor menor que R$ 100,00 não recebem desconto base (0%).
+
+Compras com valor igual ou maior que R$ 100,00 e menor que R$ 500,00 recebem 10% de desconto base.
+
+Compras com valor igual ou maior que R$ 500,00 recebem 20% de desconto base.
+
+Se o tipo_cliente for "VIP" (independente de estar escrito em maiúsculo ou minúsculo), deve-se adicionar 5% extras sobre a porcentagem base (ex: 0% vira 5%, 10% vira 15%, etc.). Para clientes "COMUM", não há acréscimo.
+
+Regra de Teto: O valor máximo em dinheiro do desconto nunca pode ultrapassar R$ 200,00.
+
+
+
+🛠️ A Sua Missão:
+No seu ambiente local (usando Pytest, JUnit, etc.):
+
+Copie o código para o seu projeto;
+
+Escreva os cenários pensados para esse código;
+
+Escreva os Testes Unitários Automatizados cobrindo todos os cenários, atento aos definidos nos Critérios de Aceite.
+
+Rode os testes. Possivelmente alguns testes vão falhar (GUARDE UM PRINT = PRINT1) por causa dos "detalhes" no código original.
+
+Corrija o código principal (do Dev Jr.) para que todos os seus testes passem (GUARDE UM PRINT = PRINT2).
+
+Guarde o código corrigido, os cenários, e um print da execução dos testes automatizados no github e nos campos abaixo.
